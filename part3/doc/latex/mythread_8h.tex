@@ -1,0 +1,131 @@
+\hypertarget{mythread_8h}{}\doxysection{include/mythread.h File Reference}
+\label{mythread_8h}\index{include/mythread.h@{include/mythread.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ucontext.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for mythread.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mythread_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{mythread_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlock}{lock}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mythread_8h_a208f41a96703a668897f97f212bfaf52}{mythread\+\_\+init}} ()
+\item 
+void $\ast$ \mbox{\hyperlink{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5}{mythread\+\_\+create}} (void func(void $\ast$), void $\ast$arg)
+\item 
+void \mbox{\hyperlink{mythread_8h_abf1d6455a1b78b1be5113e76ba8b02dc}{mythread\+\_\+join}} ()
+\item 
+void \mbox{\hyperlink{mythread_8h_a8c8049ca40472b6e4fedad5960d6b56d}{mythread\+\_\+yield}} ()
+\item 
+struct \mbox{\hyperlink{structlock}{lock}} $\ast$ \mbox{\hyperlink{mythread_8h_a168a10005fede78825b8c0c925415add}{lock\+\_\+new}} ()
+\item 
+void \mbox{\hyperlink{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f}{lock\+\_\+acquire}} (struct \mbox{\hyperlink{structlock}{lock}} $\ast$lk)
+\item 
+int \mbox{\hyperlink{mythread_8h_a86df4756182955a6ca389503c93d1822}{lock\+\_\+release}} (struct \mbox{\hyperlink{structlock}{lock}} $\ast$lk)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f}\label{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f}} 
+\index{mythread.h@{mythread.h}!lock\_acquire@{lock\_acquire}}
+\index{lock\_acquire@{lock\_acquire}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{lock\_acquire()}{lock\_acquire()}}
+{\footnotesize\ttfamily void lock\+\_\+acquire (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlock}{lock}} $\ast$}]{lk }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mythread_8h_a168a10005fede78825b8c0c925415add}\label{mythread_8h_a168a10005fede78825b8c0c925415add}} 
+\index{mythread.h@{mythread.h}!lock\_new@{lock\_new}}
+\index{lock\_new@{lock\_new}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{lock\_new()}{lock\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structlock}{lock}} $\ast$ lock\+\_\+new (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{mythread_8h_a168a10005fede78825b8c0c925415add_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mythread_8h_a86df4756182955a6ca389503c93d1822}\label{mythread_8h_a86df4756182955a6ca389503c93d1822}} 
+\index{mythread.h@{mythread.h}!lock\_release@{lock\_release}}
+\index{lock\_release@{lock\_release}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{lock\_release()}{lock\_release()}}
+{\footnotesize\ttfamily int lock\+\_\+release (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlock}{lock}} $\ast$}]{lk }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{mythread_8h_a86df4756182955a6ca389503c93d1822_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5}\label{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5}} 
+\index{mythread.h@{mythread.h}!mythread\_create@{mythread\_create}}
+\index{mythread\_create@{mythread\_create}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{mythread\_create()}{mythread\_create()}}
+{\footnotesize\ttfamily void $\ast$ mythread\+\_\+create (\begin{DoxyParamCaption}\item[{void }]{funcvoid $\ast$,  }\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mythread_8h_a208f41a96703a668897f97f212bfaf52}\label{mythread_8h_a208f41a96703a668897f97f212bfaf52}} 
+\index{mythread.h@{mythread.h}!mythread\_init@{mythread\_init}}
+\index{mythread\_init@{mythread\_init}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{mythread\_init()}{mythread\_init()}}
+{\footnotesize\ttfamily void mythread\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{mythread_8h_a208f41a96703a668897f97f212bfaf52_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mythread_8h_abf1d6455a1b78b1be5113e76ba8b02dc}\label{mythread_8h_abf1d6455a1b78b1be5113e76ba8b02dc}} 
+\index{mythread.h@{mythread.h}!mythread\_join@{mythread\_join}}
+\index{mythread\_join@{mythread\_join}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{mythread\_join()}{mythread\_join()}}
+{\footnotesize\ttfamily void mythread\+\_\+join (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{mythread_8h_a8c8049ca40472b6e4fedad5960d6b56d}\label{mythread_8h_a8c8049ca40472b6e4fedad5960d6b56d}} 
+\index{mythread.h@{mythread.h}!mythread\_yield@{mythread\_yield}}
+\index{mythread\_yield@{mythread\_yield}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{mythread\_yield()}{mythread\_yield()}}
+{\footnotesize\ttfamily void mythread\+\_\+yield (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

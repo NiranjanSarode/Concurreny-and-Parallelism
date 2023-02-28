@@ -1,0 +1,24 @@
+\hypertarget{list_8h_source}{}\doxysection{list.\+h}
+\label{list_8h_source}\index{include/list.h@{include/list.h}}
+\mbox{\hyperlink{list_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LIST\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LIST\_H}}
+\DoxyCodeLine{00003\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist}{list}}\ \{}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlistentry}{listentry}}\ *\mbox{\hyperlink{structlist_a6af9845e1c6f302b2c5b90d662619508}{head}};\ }
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlistentry}{listentry}}\ *\mbox{\hyperlink{structlist_ae58639d00d98a95a6bf01150b0ee6817}{tail}};\ }
+\DoxyCodeLine{00006\ \};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlistentry}{listentry}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structlistentry_a5a91a8327f0821d373279c50c5a6d0cd}{data}};\ \ \ \ \ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlistentry}{listentry}}\ *\mbox{\hyperlink{structlistentry_af8abed195d59634aff42bff20dcf7fd6}{prev}};\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlistentry}{listentry}}\ *\mbox{\hyperlink{structlistentry_a994fa1314acd2899f66d17c5af294ac5}{next}};\ }
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{list_8h_a2439cbd6a22b846a91b51aad0511157a}{list\_rm}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist}{list}}\ *\mbox{\hyperlink{mythread_8c_a1f8ead7bc2ead0233b1bd1d1c4128722}{l}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlistentry}{listentry}}\ *e);\ \ \ \ \ \textcolor{comment}{//\ Remove\ an\ item\ from\ the\ list}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlistentry}{listentry}}\ *\mbox{\hyperlink{list_8h_ad0fbfe024706febcb775883a3fc56085}{list\_add}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist}{list}}\ *\mbox{\hyperlink{mythread_8c_a1f8ead7bc2ead0233b1bd1d1c4128722}{l}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structlistentry_a5a91a8327f0821d373279c50c5a6d0cd}{data}});\ \ \ \textcolor{comment}{//\ Add\ an\ item\ to\ the\ list}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist}{list}}\ *\mbox{\hyperlink{list_8h_adba20e07093a18883c9758ea57296b1a}{list\_new}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Return\ an\ initialized\ list}}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{list_8h_a4df754b95439918e8813c67771283a40}{is\_empty}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist}{list}}\ *\mbox{\hyperlink{mythread_8c_a1f8ead7bc2ead0233b1bd1d1c4128722}{l}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ list\ is\ empty\ or\ not}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

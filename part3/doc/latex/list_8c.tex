@@ -1,0 +1,114 @@
+\hypertarget{list_8c}{}\doxysection{src/list.c File Reference}
+\label{list_8c}\index{src/list.c@{src/list.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/list.\+h\char`\"{}}\newline
+Include dependency graph for list.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{list_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{list_8c_a2439cbd6a22b846a91b51aad0511157a}{list\+\_\+rm}} (struct \mbox{\hyperlink{structlist}{list}} $\ast$\mbox{\hyperlink{mythread_8c_a1f8ead7bc2ead0233b1bd1d1c4128722}{l}}, struct \mbox{\hyperlink{structlistentry}{listentry}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Linked list implementation Linked list implementation for the part 3 of the project. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structlistentry}{listentry}} $\ast$ \mbox{\hyperlink{list_8c_ad0fbfe024706febcb775883a3fc56085}{list\+\_\+add}} (struct \mbox{\hyperlink{structlist}{list}} $\ast$\mbox{\hyperlink{mythread_8c_a1f8ead7bc2ead0233b1bd1d1c4128722}{l}}, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Adds an element to the list. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structlist}{list}} $\ast$ \mbox{\hyperlink{list_8c_adba20e07093a18883c9758ea57296b1a}{list\+\_\+new}} ()
+\begin{DoxyCompactList}\small\item\em Creates a empty list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{list_8c_a4df754b95439918e8813c67771283a40}{is\+\_\+empty}} (struct \mbox{\hyperlink{structlist}{list}} $\ast$\mbox{\hyperlink{mythread_8c_a1f8ead7bc2ead0233b1bd1d1c4128722}{l}})
+\begin{DoxyCompactList}\small\item\em Checks if the list is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{list_8c_a4df754b95439918e8813c67771283a40}\label{list_8c_a4df754b95439918e8813c67771283a40}} 
+\index{list.c@{list.c}!is\_empty@{is\_empty}}
+\index{is\_empty@{is\_empty}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{is\_empty()}{is\_empty()}}
+{\footnotesize\ttfamily int is\+\_\+empty (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlist}{list}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Checks if the list is empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & struct list$\ast$ l -\/\texorpdfstring{$>$}{>} the linked list to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1/true if empty else 0/false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{list_8c_ad0fbfe024706febcb775883a3fc56085}\label{list_8c_ad0fbfe024706febcb775883a3fc56085}} 
+\index{list.c@{list.c}!list\_add@{list\_add}}
+\index{list\_add@{list\_add}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{list\_add()}{list\_add()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structlistentry}{listentry}} $\ast$ list\+\_\+add (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlist}{list}} $\ast$}]{l,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Adds an element to the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & struct list$\ast$ l -\/\texorpdfstring{$>$}{>} the linked list to which the element is to be added \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & void$\ast$ data -\/\texorpdfstring{$>$}{>} the data to be added to the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct listentry$\ast$ new\+\_\+entry -\/\texorpdfstring{$>$}{>} the new entry added to the list 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{list_8c_ad0fbfe024706febcb775883a3fc56085_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{list_8c_adba20e07093a18883c9758ea57296b1a}\label{list_8c_adba20e07093a18883c9758ea57296b1a}} 
+\index{list.c@{list.c}!list\_new@{list\_new}}
+\index{list\_new@{list\_new}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{list\_new()}{list\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structlist}{list}} $\ast$ list\+\_\+new (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a empty list. 
+
+\begin{DoxyReturn}{Returns}
+struct list$\ast$ l -\/\texorpdfstring{$>$}{>} the new list created 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{list_8c_adba20e07093a18883c9758ea57296b1a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{list_8c_a2439cbd6a22b846a91b51aad0511157a}\label{list_8c_a2439cbd6a22b846a91b51aad0511157a}} 
+\index{list.c@{list.c}!list\_rm@{list\_rm}}
+\index{list\_rm@{list\_rm}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{list\_rm()}{list\_rm()}}
+{\footnotesize\ttfamily void list\+\_\+rm (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlist}{list}} $\ast$}]{l,  }\item[{struct \mbox{\hyperlink{structlistentry}{listentry}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Linked list implementation Linked list implementation for the part 3 of the project. 
+
+Removes an element from the list Set the attributes of the previous and next element of the element to be removed 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & struct list$\ast$ l -\/\texorpdfstring{$>$}{>} the linked list whose element is to be removed \\
+\hline
+\mbox{\texttt{ in}}  & {\em e} & struct listentry$\ast$ e -\/\texorpdfstring{$>$}{>} the element to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

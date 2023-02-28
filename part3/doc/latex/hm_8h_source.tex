@@ -1,0 +1,29 @@
+\hypertarget{hm_8h_source}{}\doxysection{hm.\+h}
+\label{hm_8h_source}\index{include/hm.h@{include/hm.h}}
+\mbox{\hyperlink{hm_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mythread_8h}{mythread.h}}"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{list_8h}{list.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ SZ\ 4096}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhashmap__element__s}{hashmap\_element\_s}}\ \{}
+\DoxyCodeLine{00006\ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structhashmap__element__s_ad70ff3011f73d207b0b352207f2464aa}{key}};}
+\DoxyCodeLine{00007\ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structhashmap__element__s_ad05145c82dab722f55eadd8449e2156a}{data}};}
+\DoxyCodeLine{00008\ \};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhashmap__s}{hashmap\_s}}\ \{}
+\DoxyCodeLine{00011\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist}{list}}*\ \mbox{\hyperlink{structhashmap__s_ae8dcc4747fc7199a44ca2174b7945ec0}{table}}[\mbox{\hyperlink{hm_8h_a11d818f14508b076eda0cfe98640b7ae}{SZ}}];}
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlock}{lock}}*\ \mbox{\hyperlink{structhashmap__s_aaa05b55d24a5c7b80c681871a203fd9f}{lk}}[\mbox{\hyperlink{hm_8h_a11d818f14508b076eda0cfe98640b7ae}{SZ}}];}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{hm_8h_a4daf13745d2c7e59baf9124b0cd98d46}{hashmap\_create}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhashmap__s}{hashmap\_s}}\ *\textcolor{keyword}{const}\ out\_hashmap);}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{hm_8h_ae91dcb3550855f201bc443c1635080fb}{hashmap\_put}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhashmap__s}{hashmap\_s}}\ *\textcolor{keyword}{const}\ hashmap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{hm_8h_aeac79e3e0a618728054665a7017de511}{hashmap\_get}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhashmap__s}{hashmap\_s}}\ \textcolor{keyword}{const}*\ hashmap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key);\ \ \ \ \textcolor{comment}{//\ Fetch\ value\ of\ a\ key\ from\ hashmap}}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hm_8h_ac8294242702e5e43d6a1698cb447c982}{hashmap\_iterator}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhashmap__s}{hashmap\_s}}*\ \textcolor{keyword}{const}\ hashmap,\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ (*f)(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhashmap__element__s}{hashmap\_element\_s}}\ *\textcolor{keyword}{const}));}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{hm_8h_a50bf8746ced6f16c08b02594b508ebe0}{acquire\_bucket}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhashmap__s}{hashmap\_s}}\ *\textcolor{keyword}{const}\ hashmap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{hm_8h_a9d55e477ff997273d8087a3cd31a741f}{release\_bucket}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhashmap__s}{hashmap\_s}}\ *\textcolor{keyword}{const}\ hashmap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key);}
+
+\end{DoxyCode}

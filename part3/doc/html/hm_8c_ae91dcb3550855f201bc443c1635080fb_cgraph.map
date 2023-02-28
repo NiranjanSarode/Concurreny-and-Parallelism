@@ -1,0 +1,5 @@
+<map id="hashmap_put" name="hashmap_put">
+<area shape="rect" id="node1" title="puts entry/update entry in hashmap" alt="" coords="5,31,105,56"/>
+<area shape="rect" id="node2" href="$hm_8c.html#a89082fb36f87569604ffdf846937f845" title="hashing function hashing function to get the bucket index of the key" alt="" coords="158,5,215,31"/>
+<area shape="rect" id="node3" href="$list_8c.html#ad0fbfe024706febcb775883a3fc56085" title="Adds an element to the list." alt="" coords="153,55,220,80"/>
+</map>

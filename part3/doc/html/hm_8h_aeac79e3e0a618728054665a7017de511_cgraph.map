@@ -1,0 +1,4 @@
+<map id="hashmap_get" name="hashmap_get">
+<area shape="rect" id="node1" title="obtains the data (no of times a word repeats) from the hashmap" alt="" coords="5,5,105,31"/>
+<area shape="rect" id="node2" href="$hm_8c.html#a89082fb36f87569604ffdf846937f845" title="hashing function hashing function to get the bucket index of the key" alt="" coords="153,5,211,31"/>
+</map>

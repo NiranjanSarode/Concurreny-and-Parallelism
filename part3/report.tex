@@ -1,0 +1,275 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\pgfplotsset{compat = newest}
+
+\title{COP290 Lab 2}
+\author{Dhruv Gupta 2021CS50125 \\  Niranjan Sarode 2021CS50612\\ Dhruv Verma 2021CS51086 \\ Team Name : DND}
+\date{}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report answers the questions asked in the lab 2 assignment. Find the attached files alongside this report for complete information.
+\end{abstract}
+
+\section*{Part 2}
+\subsection*{Question 1 : Does the output vary?}
+Yes the output varies upon changing between Part 2 and Part2 with $yield\_context$.
+Here is the table depicting a few examples of changes in output upon these given inputs.
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|llll|l|l|}
+    \hline
+    \multicolumn{4}{|c|}{Text Files}                                                                                                                                                                                                                                                                                    & \multicolumn{1}{c|}{CheckPoint 2}                                                                                                              & \multicolumn{1}{c|}{CheckPoint2 with $yield\_context$}                                                                                         \\ \hline
+    \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}hello\\ world\\ test\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}hello\\ world\end{tabular}}      & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}hello\\ world\end{tabular}}      & \begin{tabular}[c]{@{}l@{}}hello\\ world\end{tabular}      & \begin{tabular}[c]{@{}l@{}}key hello , count 4\\ key test , count 1\\ key world , count 4\end{tabular}                                         & \begin{tabular}[c]{@{}l@{}}key hello , count 2\\ key test , count 1\\ key world , count 2\end{tabular}                                         \\ \hline
+    \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}hello\\ world\\ test\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}hello\\ world\end{tabular}}      & \multicolumn{1}{l|}{world}                                                      & \begin{tabular}[c]{@{}l@{}}hell\\ testing\end{tabular}     & \begin{tabular}[c]{@{}l@{}}key testing, count 1\\ key test, count 1\\ key hello, count 2\\ key world, count 3\\ key hell, count 1\end{tabular} & \begin{tabular}[c]{@{}l@{}}key testing, count 1\\ key test, count 1\\ key hello, count 2\\ key world, count 2\\ key hell, count 1\end{tabular} \\ \hline
+    \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}test\\ test\\ test\end{tabular}}   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}test\\ test\\ test\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}test\\ test\\ test\end{tabular}} & \begin{tabular}[c]{@{}l@{}}test\\ test\\ test\end{tabular} & key test, count 12                                                                                                                             & key test, count 4                                                                                                                              \\ \hline
+    \end{tabular}
+    \caption{Test Case Examples}
+    \label{tab:my-table}
+    \end{table}
+\subsection*{Question 2 : Why do you think the output varies?}
+
+
+It occurs due to Race Conditions.
+
+
+Examplewise exlpanation given below:
+
+\textbf{In First Test case:} 
+Words are parsed in this order:
+
+START \textrightarrow \
+hello (file 1) \textrightarrow \ world (file 1) \textrightarrow \ test (file 1) \textrightarrow \ hello (file 2) (yield) \textrightarrow \ hello (file 3) (yield) \textrightarrow \ hello (file 4) (yield) \textrightarrow \ hello (file 2) \textrightarrow \ world (file 2) (yield)\textrightarrow \ world (file 3) (yield) \textrightarrow \ world (file 4) \textrightarrow \ END
+
+
+Here because of yield when the   hello (file 3) (yield) \textrightarrow \ hello (file 4) (yield) is called  so the c* value is compared before being updated .To avoid it we switch it again till it reached the required file which can be done using locks. Without lock,  context-switching allows even the other context  to access the shared resource which leads to variation in output.
+
+
+Similarly in next examples whenever a repreated word is encountered the context used to access that  is switched before updating which lead to entering hashmap once instead of twice in some cases which leads to less count of words in output in some cases.
+
+
+Race conditions occurs when two or more contexts attempt to access and modify the same global variable or shared resource. Here when yielding is done the context is switched to another context and the other context is allowed to access the shared resource. This leads to the output varying.
+To prevent it we can use synchronization mechanisms such as locks to ensure that only one context can access a shared resource at a time, preventing conflicts and ensuring that the resource remains in a consistent state.
+
+\section*{Comparative analysis of runtimes of Part 2 and Part 3}
+
+Plotting tables and graphs for comparative analysis between runtimes of part 2 and part 3. The first graph represents the runtime of part 2 (with yield and locks) versus filesize . The first graph represents the runtime of part 3 versus filesize .
+
+
+Large text files to benchmark taken from \url{https://www.gutenberg.org/browse/scores/top}.
+
+\begin{tikzpicture}
+\begin{axis}[
+    xmin = 0, xmax = 500,
+    ymin = 0, ymax = 6,
+    width = \textwidth,
+    height = 0.75\textwidth,
+    xtick distance = 100,
+    ytick distance = 1,
+    grid = both,
+    minor tick num = 1,
+    major grid style = {lightgray},
+    minor grid style = {lightgray!25},
+    ylabel = {time ($s$)\textrightarrow},
+    xlabel = {File Size ($kB$) \textrightarrow},
+    legend cell align = {left},
+    legend pos = north west
+]
+ 
+% Plot data
+\addplot[
+    teal, 
+    only marks
+] table[x = t, y = x] {result.dat};
+ 
+\addplot[
+    thick,
+    orange
+] table[
+    x = t,
+    y = {create col/linear regression={y=x}}
+] {result.dat};
+ 
+% Add legend
+\addlegendentry{Data}
+\addlegendentry{
+    Best Fit Line: $ x =
+    \pgfmathprintnumber{\pgfplotstableregressiona}
+    \cdot t
+    \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$
+};
+ 
+\end{axis}
+\end{tikzpicture}
+
+
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin = 0, xmax = 500,
+        ymin = 0, ymax = 1,
+        width = \textwidth,
+        height = 0.75\textwidth,
+        xtick distance = 100,
+        ytick distance = 1,
+        grid = both,
+        minor tick num = 1,
+        major grid style = {lightgray},
+        minor grid style = {lightgray!25},
+        ylabel = {time ($s$)\textrightarrow},
+        xlabel = {File Size ($kB$) \textrightarrow},
+        legend cell align = {left},
+        legend pos = north west
+    ]
+     
+    % Plot data
+    \addplot[
+        teal, 
+        only marks
+    ] table[x = t, y = x] {result1.dat};
+     
+    \addplot[
+        thick,
+        orange
+    ] table[
+        x = t,
+        y = {create col/linear regression={y=x}}
+    ] {result1.dat};
+     
+    % Add legend
+    \addlegendentry{Data}
+    \addlegendentry{
+        Best Fit Line: $ x =
+        \pgfmathprintnumber{\pgfplotstableregressiona}
+        \cdot t
+        \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$
+    };
+     
+    \end{axis}
+    \label{tab:my-graph}
+    \end{tikzpicture}
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|}
+        \hline
+        S.No. & \multicolumn{1}{c|}{File Size (kB)} & \multicolumn{1}{c|}{Part 2} & \multicolumn{1}{c|}{Part 3} & Link                                                   \\ \hline
+        1     & 179.6                               & 1.71                        & 0.14                        & https://www.gutenberg.org/files/2701/2701-0.txt        \\ \hline
+        2     & 134.7                               & 0.82                        & 0.11                        & https://www.gutenberg.org/files/2160/2160-0.txt        \\ \hline
+        3     & 165.4                               & 1.36                        & 0.11                        & https://www.gutenberg.org/cache/epub/84/pg84.txt       \\ \hline
+        4     & 381.8                               & 5.61                        & 0.2                         & https://www.gutenberg.org/cache/epub/70054/pg70054.txt \\ \hline
+        5     & 172.0                               & 1.55                        & 0.12                        & https://www.gutenberg.org/files/74/74-0.txt            \\ \hline
+        6     & 356                                 & 5.5                         & 0.29                        & https://www.gutenberg.org/cache/epub/4363/pg4363.txt   \\ \hline
+        7     & 119.4                               & 1.77                        & 0.04                        & https://www.gutenberg.org/cache/epub/15399/pg15399.txt \\ \hline
+        8     & 229.2                               & 2.42                        & 0.12                        & https://www.gutenberg.org/files/2680/2680-0.txt        \\ \hline
+        9     & 290.0                               & 5.01                        & 0.12                        & https://www.gutenberg.org/files/140/140-0.txt          \\ \hline
+        10    & 225.5                               & 3.02                        & 0.14                        & https://www.gutenberg.org/files/1998/1998-0.txt        \\ \hline
+        11    & 205.4                               & 1.95                        & 0.11                        & https://www.gutenberg.org/cache/epub/37106/pg37106.txt \\ \hline
+        \end{tabular}
+        \caption{Comparative Analysis of runtimes of Part 2 and Part 3 }
+        \label{tab:my-tables}
+        \end{table}
+
+
+
+\bigbreak
+\bigbreak
+
+From the data we can see that multithreaded program works way faster than single threaded program with multiple concurrent stacks. Data in the table represents runtime in seconds.
+\subsection*{Variation on basis of number of input files (Part 3)}
+
+
+To Test this we use the files
+\begin{itemize}
+    \item File 1 : https://www.gutenberg.org/files/74/74-0.txt (172.0 kB) 
+    \item File 2 : https://www.gutenberg.org/cache/epub/15399/pg15399.txt(119.4 kB)
+    \item File 3 : https://www.gutenberg.org/cache/epub/37106/pg37106.txt(205.4 kB)
+    \item File 4 : https://www.gutenberg.org/files/1998/1998-0.txt(225.5 kB)
+\end{itemize}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    S.No. & Files Tested                    & Runtime Part 2 (in s) & Runtime Part 3 (in s) \\ \hline
+    1     & File 1, File 2, File 3 , File 4 & 29.28                 & 0.39                  \\ \hline
+    2     & File 1, File 2, File 3          & 14.32                 & 0.24                  \\ \hline
+    3     & File 1, File 2                  & 7.5                   & 0.18                  \\ \hline
+    4     & File 1                          & 1.46                  & 0.11                  \\ \hline
+    \end{tabular}
+    \caption{Testing Multiple Files}
+    \label{tab:my-table}
+    \end{table}
+
+On increasing the number of input files the runtime increases but the increment in much higher in part 2 than in part 3. This is because we are using single thread with yield and locks in part 2 and multiple threads in part 3.
+
+\subsection*{Variation on basis of size of input files (Part 3)}
+Refer to table \ref{tab:my-tables} for data. and the second graph  for variation .From this we can see that as the size of input files increases the runtime increases. 
+\subsection*{Variation on basis of repeated words in file (Part 3)}
+
+For this we took a 300 word text and copied and pasted over and over to obtain larger size .
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    S.No. & File Size & Runtime in Part 2 (s) & Runtime in Part 3 (s) \\ \hline
+    1     & 179.8kB   & 2.6                   & 0.01                  \\ \hline
+    2     & 359.5kB   & 8.25                  & 0.03                  \\ \hline
+    3     & 719.0kB   & 23.49                 & 0.05                  \\ \hline
+    4     & 1126.3kB  & 47                    & 0.10                  \\ \hline
+    \end{tabular}
+    \caption{Variation in  runtime for repeated word file}
+    \label{tab:my-table}
+    \end{table}
+
+As the repetitions increase the Part 3 takes way less time than in Part 2.
+\section*{Token distribution}
+
+
+Thw work was done by all 3 of us together and equally (not distributed partwise) so we distribute 10 tokens each of us.
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|c|c|}
+        \hline
+        S.No. & Token Receiver  & Total Tokens Received \\ \hline
+        1     & Dhruv Gupta     & 10                    \\ \hline
+        2     & Dhruv Verma     & 10                    \\ \hline
+        3     & Niranjan Sarode & 10                    \\ \hline
+        \end{tabular}
+        \end{table}
+
+
+\section*{Design Decisions and Assumptions}
+\begin{itemize}
+    \item In Part 3 main.c doesnt prints key and value correctly. We replaced
+    
+        $"printf("key \%s, count \%d  \backslash n", e->key, *count);"$
+    
+    
+    by   $"printf("key \%s\backslash n", e->key);printf("count \%d \backslash n", \*count);"$
+    \item Input files must end in newline character.
+    \item Input files has no non-ascii characters.
+    \item Paths to header accessed in test files are corrected to relative paths.
+\end{itemize}
+\end{document}

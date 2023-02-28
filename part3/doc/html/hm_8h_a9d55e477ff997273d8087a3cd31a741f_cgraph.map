@@ -1,0 +1,5 @@
+<map id="release_bucket" name="release_bucket">
+<area shape="rect" id="node1" title="releases the lock of the bucket corresponding to the key Calls lock_release on the lock corresponding..." alt="" coords="5,31,116,56"/>
+<area shape="rect" id="node2" href="$hm_8c.html#a89082fb36f87569604ffdf846937f845" title="hashing function hashing function to get the bucket index of the key" alt="" coords="183,5,240,31"/>
+<area shape="rect" id="node3" href="$mythread_8c.html#a86df4756182955a6ca389503c93d1822" title=" " alt="" coords="164,55,259,80"/>
+</map>

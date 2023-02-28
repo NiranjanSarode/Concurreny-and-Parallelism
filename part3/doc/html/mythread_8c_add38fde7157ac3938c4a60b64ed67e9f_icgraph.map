@@ -1,0 +1,4 @@
+<map id="lock_acquire" name="lock_acquire">
+<area shape="rect" id="node1" title=" " alt="" coords="164,5,259,31"/>
+<area shape="rect" id="node2" href="$hm_8c.html#a50bf8746ced6f16c08b02594b508ebe0" title="acquires the lock of the bucket corresponding to the key Calls lock_acquire on the lock corresponding..." alt="" coords="5,5,116,31"/>
+</map>

@@ -1,0 +1,220 @@
+\hypertarget{hm_8h}{}\doxysection{include/hm.h File Reference}
+\label{hm_8h}\index{include/hm.h@{include/hm.h}}
+{\ttfamily \#include \char`\"{}mythread.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\newline
+Include dependency graph for hm.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hm_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{hm_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structhashmap__element__s}{hashmap\+\_\+element\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{hm_8h_a11d818f14508b076eda0cfe98640b7ae}{SZ}}~4096
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{hm_8h_a4daf13745d2c7e59baf9124b0cd98d46}{hashmap\+\_\+create}} (struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const out\+\_\+hashmap)
+\begin{DoxyCompactList}\small\item\em Creates a empty hashmap. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{hm_8h_ae91dcb3550855f201bc443c1635080fb}{hashmap\+\_\+put}} (struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const hashmap, const char $\ast$key, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em puts entry/update entry in hashmap \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{hm_8h_aeac79e3e0a618728054665a7017de511}{hashmap\+\_\+get}} (struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} const $\ast$hashmap, const char $\ast$key)
+\begin{DoxyCompactList}\small\item\em obtains the data (no of times a word repeats) from the hashmap \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hm_8h_ac8294242702e5e43d6a1698cb447c982}{hashmap\+\_\+iterator}} (struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const hashmap, int($\ast$f)(struct \mbox{\hyperlink{structhashmap__element__s}{hashmap\+\_\+element\+\_\+s}} $\ast$const))
+\begin{DoxyCompactList}\small\item\em iterates through the hashmap and calls the function f on each element \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{hm_8h_a50bf8746ced6f16c08b02594b508ebe0}{acquire\+\_\+bucket}} (struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const hashmap, const char $\ast$key)
+\begin{DoxyCompactList}\small\item\em acquires the lock of the bucket corresponding to the key Calls lock\+\_\+acquire on the lock corresponding to the bucket \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{hm_8h_a9d55e477ff997273d8087a3cd31a741f}{release\+\_\+bucket}} (struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const hashmap, const char $\ast$key)
+\begin{DoxyCompactList}\small\item\em releases the lock of the bucket corresponding to the key Calls lock\+\_\+release on the lock corresponding to the bucket \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{hm_8h_a11d818f14508b076eda0cfe98640b7ae}\label{hm_8h_a11d818f14508b076eda0cfe98640b7ae}} 
+\index{hm.h@{hm.h}!SZ@{SZ}}
+\index{SZ@{SZ}!hm.h@{hm.h}}
+\doxysubsubsection{\texorpdfstring{SZ}{SZ}}
+{\footnotesize\ttfamily \#define SZ~4096}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{hm_8h_a50bf8746ced6f16c08b02594b508ebe0}\label{hm_8h_a50bf8746ced6f16c08b02594b508ebe0}} 
+\index{hm.h@{hm.h}!acquire\_bucket@{acquire\_bucket}}
+\index{acquire\_bucket@{acquire\_bucket}!hm.h@{hm.h}}
+\doxysubsubsection{\texorpdfstring{acquire\_bucket()}{acquire\_bucket()}}
+{\footnotesize\ttfamily int acquire\+\_\+bucket (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const}]{hashmap,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+acquires the lock of the bucket corresponding to the key Calls lock\+\_\+acquire on the lock corresponding to the bucket 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hashmap} & struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const hashmap (hashmap whose lock is to be acquired) \\
+\hline
+\mbox{\texttt{ in}}  & {\em key} & const char$\ast$ key (key of the entry whose lock is to be acquired) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$ int 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{hm_8h_a50bf8746ced6f16c08b02594b508ebe0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hm_8h_a4daf13745d2c7e59baf9124b0cd98d46}\label{hm_8h_a4daf13745d2c7e59baf9124b0cd98d46}} 
+\index{hm.h@{hm.h}!hashmap\_create@{hashmap\_create}}
+\index{hashmap\_create@{hashmap\_create}!hm.h@{hm.h}}
+\doxysubsubsection{\texorpdfstring{hashmap\_create()}{hashmap\_create()}}
+{\footnotesize\ttfamily int hashmap\+\_\+create (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const}]{out\+\_\+hashmap }\end{DoxyParamCaption})}
+
+
+
+Creates a empty hashmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em out\+\_\+hashmap} & struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const element creating a hashmap with 4096 buckets and initializing the locks and linked lists \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 ~\newline
+ 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{hm_8h_a4daf13745d2c7e59baf9124b0cd98d46_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hm_8h_aeac79e3e0a618728054665a7017de511}\label{hm_8h_aeac79e3e0a618728054665a7017de511}} 
+\index{hm.h@{hm.h}!hashmap\_get@{hashmap\_get}}
+\index{hashmap\_get@{hashmap\_get}!hm.h@{hm.h}}
+\doxysubsubsection{\texorpdfstring{hashmap\_get()}{hashmap\_get()}}
+{\footnotesize\ttfamily void $\ast$ hashmap\+\_\+get (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} const $\ast$}]{hashmap,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+obtains the data (no of times a word repeats) from the hashmap 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hashmap} & struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} const$\ast$ hashmap(hashmap from which the data is to be obtained) \\
+\hline
+{\em key} & const char$\ast$ key (key of the entry whose data is to be obtained) uses while loopn to iterate through the linked list and returns the data if found else returns NULL \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{hm_8h_aeac79e3e0a618728054665a7017de511_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hm_8h_ac8294242702e5e43d6a1698cb447c982}\label{hm_8h_ac8294242702e5e43d6a1698cb447c982}} 
+\index{hm.h@{hm.h}!hashmap\_iterator@{hashmap\_iterator}}
+\index{hashmap\_iterator@{hashmap\_iterator}!hm.h@{hm.h}}
+\doxysubsubsection{\texorpdfstring{hashmap\_iterator()}{hashmap\_iterator()}}
+{\footnotesize\ttfamily void hashmap\+\_\+iterator (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const}]{hashmap,  }\item[{int($\ast$)(struct \mbox{\hyperlink{structhashmap__element__s}{hashmap\+\_\+element\+\_\+s}} $\ast$const)}]{f }\end{DoxyParamCaption})}
+
+
+
+iterates through the hashmap and calls the function f on each element 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hashmap} & struct hashmap\+\_\+s$\ast$ const hashmap (hashmap whose entries are to be iterated) \\
+\hline
+\mbox{\texttt{ in}}  & {\em f} & int ($\ast$f)(struct \mbox{\hyperlink{structhashmap__element__s}{hashmap\+\_\+element\+\_\+s}} $\ast$const (function pointer to the function to be called on each element) We choose f as pointer to Readfile function which is called on each element of the hashmap Iterate through the linked list corresponding to each bucket and call f on each element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hm_8h_ae91dcb3550855f201bc443c1635080fb}\label{hm_8h_ae91dcb3550855f201bc443c1635080fb}} 
+\index{hm.h@{hm.h}!hashmap\_put@{hashmap\_put}}
+\index{hashmap\_put@{hashmap\_put}!hm.h@{hm.h}}
+\doxysubsubsection{\texorpdfstring{hashmap\_put()}{hashmap\_put()}}
+{\footnotesize\ttfamily int hashmap\+\_\+put (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const}]{hashmap,  }\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+puts entry/update entry in hashmap 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hashmap} & struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const hashmap (hashmap whose entries are to be updated) \\
+\hline
+\mbox{\texttt{ in}}  & {\em key} & const char$\ast$ key (key of the entry to be added/increased) \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & void$\ast$ data (data of the entry to be added/increased) Find searches the key in the corresponding bucket and if found updates the data else creates a new entry \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{hm_8h_ae91dcb3550855f201bc443c1635080fb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hm_8h_a9d55e477ff997273d8087a3cd31a741f}\label{hm_8h_a9d55e477ff997273d8087a3cd31a741f}} 
+\index{hm.h@{hm.h}!release\_bucket@{release\_bucket}}
+\index{release\_bucket@{release\_bucket}!hm.h@{hm.h}}
+\doxysubsubsection{\texorpdfstring{release\_bucket()}{release\_bucket()}}
+{\footnotesize\ttfamily int release\+\_\+bucket (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const}]{hashmap,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+releases the lock of the bucket corresponding to the key Calls lock\+\_\+release on the lock corresponding to the bucket 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hashmap\mbox{[}in\mbox{]}} & struct \mbox{\hyperlink{structhashmap__s}{hashmap\+\_\+s}} $\ast$const hashmap (hashmap whose lock is to be released) \\
+\hline
+{\em key\mbox{[}in\mbox{]}} & const char$\ast$ key (key of the entry whose lock is to be released) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$ int 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{hm_8h_a9d55e477ff997273d8087a3cd31a741f_cgraph}
+\end{center}
+\end{figure}
